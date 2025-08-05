@@ -64,3 +64,39 @@ This project is built to learn and demonstrate offensive security concepts, priv
 - [BloodHound](https://github.com/BloodHoundAD/BloodHound)
 - [Impacket](https://github.com/SecureAuthCorp/impacket)
 - [TryHackMe: Attacktive Directory](https://tryhackme.com/room/attacktivedirectory)
+
+# Active Directory Attack Lab (Based on Josh Madakor's YouTube Guide)
+
+This is a hands-on Active Directory lab setup and attack simulation, built and tested by following Josh Madakor's video guide:  
+👉 [How to Build an Active Directory Lab for Free (2025)](https://www.youtube.com/watch?v=g5JL2RIbThM)
+
+## 🔧 Lab Components
+
+- **Windows Server 2019** (Domain Controller)
+- **Windows 10** (Domain-joined client)
+- **Kali Linux** (Attacker machine)
+
+## 🎯 Purpose
+
+This project demonstrates:
+
+- Setting up an AD domain environment in VirtualBox
+- Performing attacks such as:
+  - Enumerating users
+  - Kerberoasting
+  - Pass-the-Hash
+  - Privilege escalation
+
+## 📄 Setup Instructions
+
+The full setup guide can be found here:  
+📘 [docs/setup.md](./docs/setup.md)
+
+## 📸 Screenshots
+
+*(Add some screenshots here later of successful attacks, bloodhound graph, etc)*
+
+## 🔒 Disclaimer
+
+This lab is intended for educational purposes only.
+
