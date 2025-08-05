@@ -1,102 +1,74 @@
-# 🛡️ Active Directory Attack Lab
+# 🛡️ Active Directory Attack Lab (Based on Josh Madakor's Guide)
 
-A hands-on security lab simulating common Active Directory (AD) attacks and post-exploitation techniques.  
-This project is built to learn and demonstrate offensive security concepts, privilege escalation, and detection.
-
----
-
-## ✅ Project Overview
-
-- 🖥️ Simulated Windows Active Directory environment
-- 🎯 Executed common attacks like Kerberoasting, Pass-the-Hash, ACL abuse
-- 🔍 Detected malicious activities using Windows Event Logs and Splunk
-- 🧠 Documented attack flow, tools used, and defense strategies
+A hands-on security lab simulating real-world Active Directory (AD) attacks and defenses.  
+This project follows [Josh Madakor's tutorial](https://www.youtube.com/watch?v=g5JL2RIbThM) and was extended to include post-exploitation, detection, and logging.
 
 ---
 
-## ⚙️ Lab Setup
+## ✅ Lab Overview
 
-| Component | Details |
-|----------|---------|
-| Domain Controller | Windows Server 2019 (Active Directory + DNS) |
-| Victim Machine | Windows 10 |
-| Attacker Machine | Kali Linux |
-| Tools Used | Mimikatz, BloodHound, SharpHound, Rubeus, Impacket, PowerView, Splunk |
+| Component         | Details                                |
+|------------------|----------------------------------------|
+| Domain Controller | Windows Server 2019 (AD + DNS)         |
+| Victim Machine    | Windows 10 (Domain-joined)             |
+| Attacker Machine  | Kali Linux                             |
+| Tools Used        | Mimikatz, BloodHound, Rubeus, Impacket, PowerView, Splunk |
 
-🛠️ _You can find detailed setup instructions in `/docs/setup.md` (Coming soon)_
-
----
-
-## 🧪 Attacks Performed
-
-| Attack Technique | Tool Used | Goal |
-|------------------|------------|------|
-| Kerberoasting | Rubeus | Crack service account password |
-| Pass-the-Hash | Impacket | Lateral movement |
-| Enumeration | PowerView, BloodHound | Map domain trust and access |
-| ACL Abuse | BloodHound | Privilege escalation to Domain Admin |
+📘 **Setup instructions:** [docs/setup.md](./docs/setup.md)
 
 ---
 
-## 📸 Screenshots
+## 🎯 Project Objectives
 
-> _Coming soon: Add screenshots of BloodHound graph, terminal commands, Splunk dashboard here_
+- 🛠️ Build an on-prem Active Directory environment in VirtualBox
+- 💥 Simulate AD attacks (Kerberoasting, Pass-the-Hash, ACL Abuse)
+- 🔍 Monitor attacker behavior via Windows Logs + Splunk
+- 📚 Document attack steps, tools, and detection strategies
+
+---
+
+## ⚔️ Attacks Simulated
+
+| Attack Technique   | Tool Used         | Goal                               |
+|--------------------|------------------|------------------------------------|
+| Kerberoasting      | Rubeus           | Crack service account password     |
+| Pass-the-Hash      | Impacket (psexec.py) | Lateral movement                |
+| Enumeration        | PowerView, BloodHound | Map domain access paths     |
+| ACL Abuse          | BloodHound       | Privilege escalation to Domain Admin |
 
 ---
 
 ## 🔍 Detection & Logging
 
-- Monitored Event IDs: `4769`, `4624`, `4688`
-- Sample Splunk Search Queries (Coming soon)
+- Monitored key Event IDs: `4624` (Logon), `4769` (TGS Request), `4688` (Process Creation)
+- Centralized log collection via **Splunk**
+- Planned dashboards & search queries (coming soon)
 
 ---
 
-## 📚 Key Learnings
+## 🧠 Key Takeaways
 
-- How AD environments can be abused by attackers
-- Importance of visibility and monitoring (logs/SIEM)
-- How attackers move laterally and escalate privileges
+- How attackers exploit misconfigured AD environments
+- Importance of endpoint visibility & centralized logging
+- Hands-on experience with real-world offensive security tools
+
+---
+
+## 📸 Screenshots
+
+_(Coming soon – BloodHound graphs, terminal outputs, Splunk dashboards)_
 
 ---
 
 ## 📎 References
 
+- [Josh Madakor’s YouTube Tutorial](https://www.youtube.com/watch?v=g5JL2RIbThM)
 - [BloodHound](https://github.com/BloodHoundAD/BloodHound)
 - [Impacket](https://github.com/SecureAuthCorp/impacket)
 - [TryHackMe: Attacktive Directory](https://tryhackme.com/room/attacktivedirectory)
 
-# Active Directory Attack Lab (Based on Josh Madakor's YouTube Guide)
-
-This is a hands-on Active Directory lab setup and attack simulation, built and tested by following Josh Madakor's video guide:  
-👉 [How to Build an Active Directory Lab for Free (2025)](https://www.youtube.com/watch?v=g5JL2RIbThM)
-
-## 🔧 Lab Components
-
-- **Windows Server 2019** (Domain Controller)
-- **Windows 10** (Domain-joined client)
-- **Kali Linux** (Attacker machine)
-
-## 🎯 Purpose
-
-This project demonstrates:
-
-- Setting up an AD domain environment in VirtualBox
-- Performing attacks such as:
-  - Enumerating users
-  - Kerberoasting
-  - Pass-the-Hash
-  - Privilege escalation
-
-## 📄 Setup Instructions
-
-The full setup guide can be found here:  
-📘 [docs/setup.md](./docs/setup.md)
-
-## 📸 Screenshots
-
-*(Add some screenshots here later of successful attacks, bloodhound graph, etc)*
+---
 
 ## 🔒 Disclaimer
 
-This lab is intended for educational purposes only.
-
+This lab is intended for educational and ethical learning purposes only.
