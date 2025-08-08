@@ -47,7 +47,7 @@
 
 13. Microsoft Sentinel | Content hub - search “ Windows Security Events” and intstall it.
 
-    ![Resource Group Screenshot](../Document_Images/image17.png)
+    ![Resource Group Screenshot](../Document_Images/image17A.png)
 
 14. After done install go to manage . Select - Windows Security Events via AMA - Open connector page
 
@@ -59,12 +59,12 @@
 
 16. Go to Microsoft Sentinel - create a watchlist wizard and upload the geoip-summarised excel file for using the attacker IPaddress detect latitude,longitude,cityname and countryname.
 
-   ![Resource Group Screenshot](../Document_Images/image12.png)
-   ![Resource Group Screenshot](../Document_Images/image16.png)
+    ![Resource Group Screenshot](../Document_Images/image12.png)
+    ![Resource Group Screenshot](../Document_Images/image16.png)
 
 17. After finished upload, you are able to see 1 watchlists and 55k watchlist items.
 
-    ![Resource Group Screenshot](../Document_Images/image11.png)
+     ![Resource Group Screenshot](../Document_Images/image11.png)
 
 18. Go to Log Analytics workspaces | LOG-SOC-LAB1 | Logs - select KQL mode . Then write a KQL code for detect 4625 login failed event log statement.
 let GeoIPDB_FULL = _GetWatchlist("geoip"); let WindowsEvents = SecurityEvent 
@@ -73,45 +73,45 @@ let GeoIPDB_FULL = _GetWatchlist("geoip"); let WindowsEvents = SecurityEvent
 | evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network); WindowsEvents 
 | project TimeGenerated, Computer, AttackerIp = IpAddress, cityname, countryname, latitude, longitude, Activity
 
-   ![Resource Group Screenshot](../Document_Images/image7.png)
+    ![Resource Group Screenshot](../Document_Images/image7.png)
 
 19. Go to Microsoft Sentinel | Workbooks > Add Workbook > Edit > Add > Add query > select Advanced Editor > write the query to create a map.
 
-{
-	"type": 3,
-	"content": {
-	"version": "KqlItem/1.0",
-	"query": "let GeoIPDB_FULL = _GetWatchlist(\"geoip\");\nlet WindowsEvents = SecurityEvent;\nWindowsEvents | where EventID == 4625\n| order by TimeGenerated desc\n| evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network)\n| summarize FailureCount = count() by IpAddress, latitude, longitude, cityname, countryname\n| project FailureCount, AttackerIp = IpAddress, latitude, longitude, city = cityname, country = countryname,\nfriendly_location = strcat(cityname, \" (\", countryname, \")\");",
-	"size": 3,
-	"timeContext": {
-		"durationMs": 2592000000
-	},
-	"queryType": 0,
-	"resourceType": "microsoft.operationalinsights/workspaces",
-	"visualization": "map",
-	"mapSettings": {
-		"locInfo": "LatLong",
-		"locInfoColumn": "countryname",
-		"latitude": "latitude",
-		"longitude": "longitude",
-		"sizeSettings": "FailureCount",
-		"sizeAggregation": "Sum",
-		"opacity": 0.8,
-		"labelSettings": "friendly_location",
-		"legendMetric": "FailureCount",
-		"legendAggregation": "Sum",
-		"itemColorSettings": {
-		"nodeColorField": "FailureCount",
-		"colorAggregation": "Sum",
-		"type": "heatmap",
-		"heatmapPalette": "greenRed"
+	{
+		"type": 3,
+		"content": {
+		"version": "KqlItem/1.0",
+		"query": "let GeoIPDB_FULL = _GetWatchlist(\"geoip\");\nlet WindowsEvents = SecurityEvent;\nWindowsEvents | where EventID == 4625\n| order by TimeGenerated desc\n| evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network)\n| summarize FailureCount = count() by IpAddress, latitude, longitude, cityname, countryname\n| project FailureCount, AttackerIp = IpAddress, latitude, longitude, city = cityname, country = countryname,\nfriendly_location = strcat(cityname, \" (\", countryname, \")\");",
+		"size": 3,
+		"timeContext": {
+			"durationMs": 2592000000
+		},
+		"queryType": 0,
+		"resourceType": "microsoft.operationalinsights/workspaces",
+		"visualization": "map",
+		"mapSettings": {
+			"locInfo": "LatLong",
+			"locInfoColumn": "countryname",
+			"latitude": "latitude",
+			"longitude": "longitude",
+			"sizeSettings": "FailureCount",
+			"sizeAggregation": "Sum",
+			"opacity": 0.8,
+			"labelSettings": "friendly_location",
+			"legendMetric": "FailureCount",
+			"legendAggregation": "Sum",
+			"itemColorSettings": {
+			"nodeColorField": "FailureCount",
+			"colorAggregation": "Sum",
+			"type": "heatmap",
+			"heatmapPalette": "greenRed"
+			}
 		}
+		},
+		"name": "query - 0"
 	}
-	},
-	"name": "query - 0"
-}
 
-   ![Resource Group Screenshot](../Document_Images/image10.png)
+   	 ![Resource Group Screenshot](../Document_Images/image10.png)
 
 20. After Done editing you able to see a map locator Attacker from where. Then configure the title, resource group and save as.
 
