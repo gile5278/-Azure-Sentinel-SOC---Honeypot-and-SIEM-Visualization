@@ -172,6 +172,11 @@ Showcases attack volume (e.g., 6.5k attempts in one day):
 
    ![Resource Group Screenshot](../Document_Images/image20.png) 
 
+## 🎥 Demo Video
+The following short video demonstrates running a KQL query in Microsoft Sentinel and visualizing failed login attempts on a world map.
+
+(https://youtu.be/DvFc_cODpQk)
+
 ---
 
 ## Summary
