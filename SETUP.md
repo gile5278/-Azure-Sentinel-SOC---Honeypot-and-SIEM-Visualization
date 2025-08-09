@@ -1,4 +1,4 @@
-# Active Directory Attack Lab – Setup
+# Azure Sentinel SOC: Honeypot + SIEM Visualization – Setup
 
 ## Prerequisites
 Make sure you have:
