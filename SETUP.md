@@ -7,7 +7,6 @@ Make sure you have:
 - [Optional] A Windows client VM for conducting attacks
 
 
----
 
 ## 1. Create a Resource Group
 1. Go to Azure Portal → **Create a resource group**
@@ -15,7 +14,6 @@ Make sure you have:
    
 	![Resource Group Screenshot](Document_Images/image15.png)
 
----
 
 ## 2. Configure Network and VM
 1. **Create a Virtual Network (VNet)** within your resource group 
@@ -28,7 +26,6 @@ Make sure you have:
    
    ![Deploy VM](Document_Images/image13.png)
 
----
 
 ## 3. Adjust Firewall Rules
 1. Navigate to the VM's **Network Security Group**  
@@ -39,7 +36,6 @@ Make sure you have:
 
     ![Configure Firewall](Document_Images/image6.png)
 
----
 
 ## 4. Access the VM
 1. Copy the VM’s **Public IP**  
@@ -51,25 +47,23 @@ Make sure you have:
 
     ![Login Successful](Document_Images/image2.png)
 
----
 
 ## 5. Disable Windows Firewall 
 1. From the VM:```powershell```wf.msc
 Go to Windows Defender Firewall settings and turn off firewall for all profiles (Domain, Private, Public)
+
 	![Resource Group Screenshot](Document_Images/image21.png)
 
-2. On your local machine, open **Command Prompt** (`cmd`) and run a `ping` command to the VM's public IP to verify network connectivity.
+3. On your local machine, open **Command Prompt** (`cmd`) and run a `ping` command to the VM's public IP to verify network connectivity.
 
      ![Resource Group Screenshot](Document_Images/image5.png)
 
----
 
 ## 6. Create Log Analytics Workspace
 1. In the Azure Portal → Create a Log Analytics Workspace
 
      ![Resource Group Screenshot](Document_Images/image4.png)
 
----
 
 ## 7. Enable Microsoft Sentinel & Content Hub
 1. Go to Microsoft Sentinel → Add your new workspace (`LOG-SOC-LAB1`)
@@ -88,7 +82,6 @@ Go to Windows Defender Firewall settings and turn off firewall for all profiles 
 
     ![Resource Group Screenshot](Document_Images/image9.png)
 
----
 
 ## 8. Upload GeoIP Watchlist
 Use this to enrich SSH/attack logs with geolocation:
@@ -117,7 +110,6 @@ let GeoIPDB_FULL = _GetWatchlist("geoip"); let WindowsEvents = SecurityEvent
 
    ![Resource Group Screenshot](Document_Images/image7.png)
 
----
 
 
 ## 10. Visualize with Workbooks
@@ -131,7 +123,6 @@ let GeoIPDB_FULL = _GetWatchlist("geoip"); let WindowsEvents = SecurityEvent
 
      ![Resource Group Screenshot](Document_Images/image18.png)
 
----
      
 ## 11. Daily Report Example
 Showcases attack volume (e.g., 6.5k attempts in one day):
@@ -143,7 +134,6 @@ The following short video demonstrates running a KQL query in Microsoft Sentinel
 
 (https://youtu.be/DvFc_cODpQk)
 
----
 
 ## Summary
 This lab demonstrates:
